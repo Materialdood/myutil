@@ -6,6 +6,7 @@ from datetime import datetime
 backup = ".\\Backups"
 max_size = 1024 * 1024 * 10 # 10 MB
 backup_count = 10
+file = True
 
 log_formatter = logging.Formatter('%(asctime)s %(levelname)s [%(filename)s -> %(lineno)d]: %(message)s',datefmt='%Y-%m-%dT%H:%M:%S')
 path = f'./{datetime.now().strftime("%Y%m%d")}_logfile.txt'
@@ -22,5 +23,6 @@ stream_handler.setLevel(logging.DEBUG)
 
 #setup handler
 logger = logging.getLogger("root")
-logger.addHandler(file_handler)
+if file:
+  logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
